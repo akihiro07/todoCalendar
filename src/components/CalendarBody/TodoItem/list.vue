@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" v-show="addModalShow">
+  <div class="modal" v-show="isModalShowing">
     <div class="modal__contents">
       <div class="modal__title">TODO LIST</div>
       <div class="modal__todo">
@@ -8,15 +8,12 @@
           <input class="todoAdd__input" type="text" v-model="newTodo">
           <button class="todoAdd__button" @click="addTodo({ newTodo: newTodo, day: day.date })">add</button>
         </div>
-        <!--  TODO:keyをidにする  -->
         <ul class="todoList">
-          <!-- [check]もっと簡潔に書けそう(v-for/v-if) -->
           <li class="todoList__item" v-for="(todo, i) in todos" :key="i">
             <div v-if="day.year === todo.year && day.month === todo.month && day.date === todo.date">
               <span>
                 <input type="checkbox" @click="changeStatus({ status: todo.status, index: i })">
               </span>
-              <!-- isDoneはおかしい様な -->
               <span class="todoList__text" :class="{ 'todoList__text--isDone': todo.status }">{{ todo.text }}</span>
               <button class="todoList__delete" @click="todoDelete({ status: todo.status, index: i })">×</button>
             </div>
@@ -47,7 +44,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["addModalShow", "todos"])
+    ...mapState(["isModalShowing", "todos"])
   }
 };
 </script>

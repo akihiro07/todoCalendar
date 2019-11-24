@@ -1,7 +1,7 @@
 <template>
   <div class="todo">
     <button class="todo__item" @click="changeAddModalShow">+</button>
-    <TodoAddList :day="day"/>
+    <TodoAddList :day="day" />
   </div>
 </template>
 

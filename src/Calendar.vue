@@ -2,8 +2,8 @@
   <div class="calendar">
     <header>ToDoカレンダー</header>
     <main>
-      <CalendarHead/>
-      <CalendarBody/>
+      <CalendarHead />
+      <CalendarBody />
     </main>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
-#app > header {
+.calendar > header {
   font-size: 1.9rem;
 }
 </style>

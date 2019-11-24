@@ -1,19 +1,16 @@
 <template>
   <div class="calendarBody">
-    <!-- [TODO] keyの付け方を調べる(何をkeyに持ってくるべきかとか) -->
-    <!-- [参考]https://reffect.co.jp/vue/v-bind-key-understand-by-developer-tool -->
-    <!-- [参考]https://qiita.com/t4y3/items/f66022733e8bd3976e0e -->
     <div class="calendarBody__week">
       <span class="calendarBody__weekItem" v-for="day in week" :key="day">{{ day }}</span>
     </div>
     <div class="calendarBody__days">
-      <div class="calendarBody__daysItem" v-for="space in daysSpace" :key="space.index">
-        <span>{{ space.date }}</span>
+      <div class="calendarBody__daysItem" v-for="(space, index) in daysSpace" :key="space.index">
+        <span>{{ space[index] }}</span>
       </div>
       <div class="calendarBody__daysItem" v-for="day in days" :key="day.index">
         <span class="calendarBody__daysDate" :class="{ 'calendarBody__daysDate--isToday': day.today }">{{ day.date }}</span>
         <div class="calendarBody__daysHoliday">{{ day.holidayDate }}</div>
-        <TodoItem :day="day"/>
+        <TodoItem :day="day" />
       </div>
     </div>
   </div>
@@ -29,7 +26,6 @@ export default {
   },
   created: function() {
     this.MonthDays();
-    this.todayMarking();
   },
   data: function() {
     return {
@@ -41,7 +37,7 @@ export default {
       this.changeDays({ year: this.currentYear, month: this.currentMonth });
     },
     // mapActionsヘルパー使用
-    ...mapActions(["changeDays", "todayMarking"])
+    ...mapActions(["changeDays"])
   },
   // [TODO]EventBusを使用する or Vuexで値の受け渡しを行う
   computed: {
@@ -79,7 +75,7 @@ export default {
 }
 .calendarBody__daysItem {
   flex-basis: calc(100% / 7);
-  max-width: clac(100% / 7);
+  max-width: calc(100% / 7);
   text-align: center;
   font-size: 1.4rem;
   padding: 10px 20px 60px 20px;
