@@ -42,7 +42,7 @@ export default {
 
 <style lang="scss" scoped>
 .calendarHead {
-  margin-top: 20px;
+  padding-top: 20px;
   font-weight: bold;
   font-size: 1.4rem;
 }
@@ -52,6 +52,11 @@ export default {
 }
 .calendarHead__move {
   cursor: pointer;
-  margin: 20px;
+  background: #281125;
+  color:#d8f2da;
+  padding: 0 7px;
+  margin: 10px;
+  border-radius: 50%;
+
 }
 </style>
